@@ -1,0 +1,8 @@
+Cors
+O cors ele proibo algo que esta fora daquele servidor HTTP.
+No caso o  meu vue esta rodando em domino('POrta de acesso diferente') diferente eo cors é aplicado na API que esta rodadno em outro servidor
+Então quando o meu VUE que é uma aplicação externa, faz uma requisição por meu servidor http(da minha api), o meu servidor não deixa
+por causa da politica de cors.
+Para resolver isso, temos que ir ateo có dio da API
+e instalar uma biblioteca chamada cors
+essa biblioteca na verdade ela funciona com um middleware do express

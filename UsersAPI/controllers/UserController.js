@@ -29,7 +29,7 @@ class UserController{
     async create(req,res){
      var {email, name, password} = req.body //é o corpo do postman
      
-     if(email == undefined){
+     if(email == undefined || email == '' || email == ' '){
          res.status(400)
          res.json({err: "O e-mail é invalido!"})
          return
@@ -128,12 +128,13 @@ class UserController{
 
             }else{
                 res.status(406)
-                res.send("Senha incorreta")
+                res.json({err: "Senha incorreta"})
+                
             }
 
         }else{
-
-            res.json({status: false})
+            res.status(406)
+            res.json({status: false, err: "O usuario não existe!"})
 
         }
     }
