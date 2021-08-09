@@ -5,6 +5,7 @@ import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Users from '../views/Users.vue'
 import axios from 'axios'
+import Edit from '../views/Edit.vue'
 
 
 function AdminAuth(to, from, next){
@@ -18,7 +19,7 @@ function AdminAuth(to, from, next){
     }
     console.log(req)
     axios.post("http://localhost:8686/validate",{},req).then(res => {
-      axios.post(res)
+      console.log(res)
       next()
     }).catch(err => {
       console.log(err.response)
@@ -53,6 +54,13 @@ const routes = [
     name: 'Users',
     component: Users,
     beforeEnter: AdminAuth
+  },
+  {
+    path:'/admin/users/edit/:id',
+    name: 'UserEdit',
+    component: Edit,
+    beforeEnter: AdminAuth
+    
   },
 
   {

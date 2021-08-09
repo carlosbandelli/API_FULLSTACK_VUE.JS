@@ -83,43 +83,43 @@ class User{
     }
 
     async update(id,email,name,role){
-       var user  = await this.findById(id)
-       if (user != undefined){
 
-            var editUser = {}
-            // validação de edição de e-mail
-            if(email != undefined){
+        var user = await this.findById(id);
+
+        if(user != undefined){
+
+            var editUser = {};
+
+            if(email != undefined){ 
                 if(email != user.email){
-                   var result = await this.findEmail(email)
+                   var result = await this.findEmail(email);
                    if(result == false){
-                        editUser.email = email
+                        editUser.email = email;
                    }else{
-                    return{status: false,err:"O e-mail já está cadastrado"}
+                        return {status: false,err: "O e-mail já está cadastrado"}
                    }
-                }else{
-                    return{status: false,err:"E-mail atual, sem alteração."}
                 }
             }
 
             if(name != undefined){
-                editUser.name = name
+                editUser.name = name;
             }
 
             if(role != undefined){
-                editUser.role = role
+                editUser.role = role;
             }
+
             try{
-                await knex.update(editUser).where({id: id}).table("users")
-                return{status: true}
+                await knex.update(editUser).where({id: id}).table("users");
+                return {status: true}
             }catch(err){
-                return{status:false, err: err}
+                return {status: false,err: err}
             }
-
-       }else{
-           return{status: false,err:"O usuario não existe!"}
-       }
+            
+        }else{
+            return {status: false,err: "O usuário não existe!"}
+        }
     }
-
     //Deleção
 
     async delete(id){

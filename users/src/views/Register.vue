@@ -16,7 +16,8 @@
                 <p>Password</p>
                 <input type="password" placeholder="*********" class="input" v-model="password">  
                 <hr> 
-                <button class="button is-success" @click="register">Cadastrar</button>
+                <button class="button is-success" @click="register">Cadastrar</button>  | 
+                <router-link :to="{name: 'Users'}"><button class="button is-info">Painel de usuarios</button> </router-link>
             </div>
         </div>        
     </div>

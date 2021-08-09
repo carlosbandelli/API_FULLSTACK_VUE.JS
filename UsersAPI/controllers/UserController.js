@@ -3,7 +3,7 @@ var PasswordToken = require("../models/PasswordToken")
 var jwt = require("jsonwebtoken")
 var bcrypt = require("bcrypt")
 
-var secret = "carlos"
+var secret = "adsuasgdhjasgdhjdgahjsg12hj3eg12hj3g12hj3g12hj3g123"
 
 class UserController{
     //Busca de usuarios
@@ -51,20 +51,20 @@ class UserController{
 
     }
 
-    async edit(req,res){
-        var {id, name, role, email} = req.body
-        var result = await User.update(id,email,name,role)
+    async edit(req, res){
+        var {id, name, role, email} = req.body;
+        var result = await User.update(id,email,name,role);
         if(result != undefined){
             if(result.status){
-                res.status(200)
-                res.send("Tudo Ok!")
+                res.status(200);
+                res.send("Tudo OK!");
             }else{
-                res.status(406)
+                res.status(406);
                 res.send(result.err)
             }
         }else{
-            res.status(406)
-            res.send("Ocorreu um erro no servidor")
+            res.status(406);
+            res.send("Ocorreu um erro no servidor!");
         }
     }
 
